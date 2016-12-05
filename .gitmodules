@@ -1,0 +1,3 @@
+[submodule "snake"]
+	path = snake
+	url = https://github.com/crossin/gluttonous.git
