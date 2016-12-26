@@ -5,6 +5,7 @@ import datetime
 import json
 import os
 import sys
+import base64
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -53,7 +54,7 @@ def generate_file():
             channel_click_count_dict[channel] = click_count + (
                 channel_click_count_dict[channel] if channel in channel_click_count_dict else 0)
 
-        file_text += '%s %d %s %s\n' % (docid, click_count, channel, title)
+        file_text += '%s %d %s %s\n' % (docid, click_count, channel, base64.b64encode(title.encode('utf-8')))
 
     channel_text = '------channel------\nchannel news_count click_count\n'
     channel_list = channel_news_count_dict.items()
